@@ -28,7 +28,7 @@
  @since     2009
  ---------------------------------------------------------------------- */
 
- class PluginDatainjectionSession {
+class PluginDatainjectionSession {
 
    /**
     * Get a parameter from the HTTP session

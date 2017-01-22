@@ -85,43 +85,39 @@ class PluginDatainjectionSoftwareInjection extends Software
    **/
    function processDictionnariesIfNeeded(&$values) {
 
-         $params['entities_id'] = $_SESSION['glpiactive_entity'];
-         $params['name']        = $values['Software']['name'];
-         if (isset($values['Software']['manufacturers_id'])) {
-            $params['manufacturer'] = $values['Software']['manufacturers_id'];
-         } else {
-            $params['manufacturer'] = '';
+      $params['entities_id'] = $_SESSION['glpiactive_entity'];
+      $params['name']        = $values['Software']['name'];
+      if (isset($values['Software']['manufacturers_id'])) {
+         $params['manufacturer'] = $values['Software']['manufacturers_id'];
+      } else {
+         $params['manufacturer'] = '';
+      }
+      $rulecollection = new RuleDictionnarySoftwareCollection();
+      $res_rule       = $rulecollection->processAllRules($params, array(), array());
+
+      if (!isset($res_rule['_no_rule_matches'])) {
+         //Software dictionnary explicitly refuse import
+         if (isset($res_rule['_ignore_import']) && $res_rule['_ignore_import']) {
+            return false;
          }
-         $rulecollection = new RuleDictionnarySoftwareCollection();
-         $res_rule       = $rulecollection->processAllRules($params, array(), array());
-
-         if (!isset($res_rule['_no_rule_matches'])) {
-            //Software dictionnary explicitly refuse import
-            if (isset($res_rule['_ignore_import']) && $res_rule['_ignore_import']) {
-               return false;
-            }
-            if (isset($res_rule['is_helpdesk_visible'])) {
-               $values['Software']['is_helpdesk_visible'] = $res_rule['is_helpdesk_visible'];
-            }
-
-            if (isset($res_rule['version'])) {
-               $values['SoftwareVersion']['name'] = $res_rule['version'];
-            }
-
-            if (isset($res_rule['name'])) {
-               $values['Software']['name'] = $res_rule['name'];
-            }
-
-            if (isset($res_rule['supplier'])) {
-               if (isset($values['supplier'])) {
-                  $values['Software']['manufacturers_id']
-                     = Dropdown::getDropdownName('glpi_suppliers', $res_rule['supplier']);
-               }
+         if (isset($res_rule['is_helpdesk_visible'])) {
+            $values['Software']['is_helpdesk_visible'] = $res_rule['is_helpdesk_visible'];
+         }
+         if (isset($res_rule['version'])) {
+            $values['SoftwareVersion']['name'] = $res_rule['version'];
+         }
+         if (isset($res_rule['name'])) {
+            $values['Software']['name'] = $res_rule['name'];
+         }
+         if (isset($res_rule['supplier'])) {
+            if (isset($values['supplier'])) {
+               $values['Software']['manufacturers_id']
+                  = Dropdown::getDropdownName('glpi_suppliers', $res_rule['supplier']);
             }
          }
-         return true;
+      }
+      return true;
    }
-
 
    /**
     * @see plugins/datainjection/inc/PluginDatainjectionInjectionInterface::addOrUpdateObject()

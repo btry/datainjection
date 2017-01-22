@@ -617,20 +617,7 @@ class PluginDatainjectionCommonInjectionLib {
             }
             $this->setValueForItemtype($itemtype, $linkfield, $id);
             break;
-/*
-         case 'multiline_text':
-            $message = '';
-            if ($value != self::EMPTY_VALUE) {
-               //If update : do not overwrite the existing field in DB, append at the end !
-               //if ($add == self::IMPORT_UPDATE) {
-                  $message = $this->values[$itemtype][$linkfield]."\n";
-               //}
 
-               $message .= $value;
-               $this->setValueForItemtype($itemtype,$linkfield,$message);
-            }
-            break;
-*/
          default:
             if (method_exists($injectionClass,'getSpecificFieldValue')) {
                $id = $injectionClass->getSpecificFieldValue($itemtype, $searchOption, $field,
@@ -1489,7 +1476,7 @@ class PluginDatainjectionCommonInjectionLib {
       if (method_exists($injectionClass, 'customimport')) {
          $newID = call_user_func(array($injectionClass, 'customimport'), $toinject, $add,
                                  $this->rights);
-      } elseif ($item instanceof CommonDropdown && $add) {
+      } else if ($item instanceof CommonDropdown && $add) {
          $newID = $item->import($toinject);
 
       } else {
@@ -1641,7 +1628,7 @@ class PluginDatainjectionCommonInjectionLib {
                 $sql.= " WHERE `designation` = '" .
                           $this->getValueByItemtypeAndName($itemtype, 'designation') . "'";
 
-            } elseif ($item instanceof CommonDBRelation) {
+            } else if ($item instanceof CommonDBRelation) {
                //Type is a relation : check it this relation still exists
                //Define the side of the relation to use
 

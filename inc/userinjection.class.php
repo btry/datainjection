@@ -91,7 +91,6 @@ class PluginDatainjectionUserInjection extends User
       $tab[101]['relationclass'] = 'Profile_User';
       $tab[101]['relationfield'] = $tab[101]['linkfield'];
 
-
       //Remove some options because some fields cannot be imported
       $blacklist     = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions(get_parent_class($this));
       $notimportable = array(13, 14, 15, 17, 20, 23, 30, 31, 60, 61, 77, 91, 92, 93);
@@ -147,7 +146,7 @@ class PluginDatainjectionUserInjection extends User
           && $rights['add_dropdown']
           && Session::haveRight('user', UPDATE)) {
 
-           if (!countElementsInTable("glpi_useremails",
+         if (!countElementsInTable("glpi_useremails",
                                      "`users_id`='".$values['User']['id']."'
                                        AND `email`='".$values['User']['useremails_id']."'")) {
             $useremail       = new UserEmail();

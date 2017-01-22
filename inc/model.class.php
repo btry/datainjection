@@ -1242,7 +1242,6 @@ class PluginDatainjectionModel extends CommonDBTM {
                $tmp['type'] = PluginDatainjectionCommonInjectionLib::getActionLabel($result['type']);
             }
 
-
             if (isset($result[$model->fields['itemtype']])) {
                $tmp['item'] = $result[$model->fields['itemtype']];
                $url         = Toolbox::getItemTypeFormURL($model->fields['itemtype'])."?id=".

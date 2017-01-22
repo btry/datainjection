@@ -115,7 +115,6 @@ if ($pot && $po) {
          } else {
             $current_string        .= $reg[1];
          }
-//          echo '-'.$current_string."-\n";
       }
 
 
@@ -127,8 +126,6 @@ if ($pot && $po) {
             } else {
                $translation = search_in_dict($current_string, $context);
                $content     = "msgstr \"$translation\"\n";
-//              echo '+'.$current_string."+\n";
-//                echo "$translation\n";
             }
          } else {
 
@@ -136,17 +133,13 @@ if ($pot && $po) {
                case "0" : // Singular
                   $in_plural = false;
 
-//                   echo '+'.$current_string."+\n";
                   $sing_trans = search_in_dict($current_string, $context);
-//                   echo "$translation\n";
                   break;
 
                case "1" : // Plural
                   $in_plural = true;
 
-//                   echo '++'.$current_string."++\n";
                   $plural_trans = search_in_dict($current_string_plural, $context);
-//                   echo "$translation\n";
                   break;
             }
 
@@ -155,9 +148,7 @@ if ($pot && $po) {
                   $content = "msgstr[0] \"$current_string\"\n";
                   $content .= "msgstr[1] \"$current_string_plural\"\n";
                } else {
-//                   echo $current_string.'->'.$sing_trans.' '.$current_string_plural.'->'.$plural_trans."\n";
                   if (!strlen($sing_trans) || !strlen($plural_trans)) {
-//                      echo "clean\n";
                      $sing_trans = '';
                      $plural_trans = '';
                   }
@@ -199,7 +190,6 @@ function search_in_dict($string, $context) {
    $varmatch = "(%s)*";
 
    if (preg_match("/$varmatch$ponctmatch(.*)$ponctmatch$varmatch$/U",$string,$reg)) {
-//       print_r($reg);
       $left   = $reg[1];
       $left   .= $reg[2];
       $string = $reg[3];
@@ -209,7 +199,6 @@ function search_in_dict($string, $context) {
       }
    }
 
-//    echo $left.' <- '.$string.' -> '.$right."\n";
    foreach ($REFLANG as $mod => $data) {
 
       foreach ($data as $key => $val) {
@@ -255,9 +244,6 @@ function search_in_dict($string, $context) {
 					return $left.$LANG[$mod][$key].$right;
 				}
 			} else {
-				//toolbox::logdebug($val);
-				//toolbox::logdebug($key);
-				//toolbox::logdebug($mod);
 				foreach ($val as $k => $v) {
 					if (!isset($LANG[$mod][$key][$k])) {
 						continue;

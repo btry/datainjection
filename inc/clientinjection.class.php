@@ -28,7 +28,7 @@
  @since     2009
  ---------------------------------------------------------------------- */
 
- class PluginDatainjectionClientInjection {
+class PluginDatainjectionClientInjection {
 
    static $rightname = "plugin_datainjection_use";
 

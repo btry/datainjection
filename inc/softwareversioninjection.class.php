@@ -79,7 +79,6 @@ class PluginDatainjectionSoftwareVersionInjection extends SoftwareVersion
       $key = array_search(2, $options['ignore_fields']);
       unset($options['ignore_fields'][$key]);
 
-
       $options['displaytype']   = array("dropdown"       => array(4,31),
                                         "multiline_text" => array(16),
                                         "software" => array(100));

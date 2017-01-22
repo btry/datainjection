@@ -39,11 +39,11 @@ class PluginDatainjectionProfile extends Profile {
                 'field'     => 'plugin_datainjection_model'),
           array('itemtype'  => 'PluginDatainjectionModel',
                 'label'     => __('Injection of the file', 'datainjection'),
-                'field'     => 'plugin_datainjection_use', 
+                'field'     => 'plugin_datainjection_use',
                 'rights'    => array(READ => __('Read'))));
       return $rights;
    }
-   
+
    /**
     * Clean profiles_id from plugin's profile table
     *
@@ -51,8 +51,8 @@ class PluginDatainjectionProfile extends Profile {
    **/
    function cleanProfiles($ID) {
       global $DB;
-      $query = "DELETE FROM `glpi_profiles` 
-                WHERE `profiles_id`='$ID' 
+      $query = "DELETE FROM `glpi_profiles`
+                WHERE `profiles_id`='$ID'
                    AND `name` LIKE '%plugin_datainjection%'";
       $DB->query($query);
    }
@@ -75,13 +75,12 @@ class PluginDatainjectionProfile extends Profile {
          $profile = new self();
          $ID   = $item->getField('id');
          //In case there's no right datainjection for this profile, create it
-         self::addDefaultProfileInfos($item->getID(), 
+         self::addDefaultProfileInfos($item->getID(),
                                       array('plugin_datainjection_model' => 0));
          $profile->showForm($ID);
       }
       return true;
    }
-
 
    /**
     * @param $profile
@@ -108,18 +107,17 @@ class PluginDatainjectionProfile extends Profile {
    static function createFirstAccess($profiles_id) {
       include_once(GLPI_ROOT."/plugins/datainjection/inc/profile.class.php");
       foreach (self::getAllRights() as $right) {
-         self::addDefaultProfileInfos($profiles_id, 
-                                    array('plugin_datainjection_model' => ALLSTANDARDRIGHT, 
+         self::addDefaultProfileInfos($profiles_id,
+                                    array('plugin_datainjection_model' => ALLSTANDARDRIGHT,
                                           'plugin_datainjection_use' => READ));
       }
    }
-
 
    static function migrateProfiles() {
       global $DB;
       if (!TableExists('glpi_plugin_datainjection_profiles')) {
          return true;
-      } 
+      }
 
       $profiles = getAllDatasFromTable('glpi_plugin_datainjection_profiles');
       foreach ($profiles as $id => $profile) {
@@ -148,7 +146,7 @@ class PluginDatainjectionProfile extends Profile {
          }
       }
    }
-   
+
     /**
     * Show profile form
     *
@@ -170,7 +168,7 @@ class PluginDatainjectionProfile extends Profile {
       $profile->getFromDB($profiles_id);
 
       $rights = self::getAllRights();
-      $profile->displayRightsChoiceMatrix(self::getAllRights(), 
+      $profile->displayRightsChoiceMatrix(self::getAllRights(),
                                           array('canedit'       => $canedit,
                                                 'default_class' => 'tab_bg_2',
                                                 'title'         => __('General')));

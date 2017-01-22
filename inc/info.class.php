@@ -106,7 +106,7 @@ class PluginDatainjectionInfo extends CommonDBTM {
          echo "</table>";
          Html::closeForm();
          echo "<br/>";
-     }
+      }
 
    }
 

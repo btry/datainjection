@@ -87,7 +87,7 @@ class PluginDatainjectionProfileInjection extends Profile
                     ?PluginDatainjectionCommonInjectionLib::SUCCESS
                     :PluginDatainjectionCommonInjectionLib::TYPE_MISMATCH);
 
-          default :
+         default:
             return PluginDatainjectionCommonInjectionLib::SUCCESS;
       }
    }

@@ -297,7 +297,6 @@ function plugin_datainjection_update170_20() {
 
    $migration->dropTable('glpi_plugin_datainjection_filetype');
 
-
    $migration->renameTable('glpi_plugin_datainjection_models_csv',
                            'glpi_plugin_datainjection_modelcsvs');
 
@@ -959,29 +958,28 @@ function plugin_datainjection_update170_20() {
               WHERE `itemtype` NOT IN ('none')
               GROUP BY `itemtype`,`value`";
 
-    foreach ($DB->request($query) as $data) {
-       if (isset($foreignkeys[$data['value']])) {
-          foreach ($foreignkeys[$data['value']] as $field_info) {
-             $table = getTableForItemType($data['itemtype']);
+   foreach ($DB->request($query) as $data) {
+      if (isset($foreignkeys[$data['value']])) {
+         foreach ($foreignkeys[$data['value']] as $field_info) {
+            $table = getTableForItemType($data['itemtype']);
 
-             if (in_array($table,$field_info['tables'])) {
-                $query = "UPDATE `glpi_plugin_datainjection_mappings`
+            if (in_array($table,$field_info['tables'])) {
+               $query = "UPDATE `glpi_plugin_datainjection_mappings`
                           SET `value` = '".$field_info['to']."'
                           WHERE `itemtype` = '".$data['itemtype']."'
                                 AND `value` = '".$data['value']."'";
-                $DB->queryOrDie($query, "Datainjection : error converting mapping fields");
+               $DB->queryOrDie($query, "Datainjection : error converting mapping fields");
 
-                $query = "UPDATE `glpi_plugin_datainjection_infos`
+               $query = "UPDATE `glpi_plugin_datainjection_infos`
                           SET `value` = '".$field_info['to']."'
                           WHERE `itemtype` = '".$data['itemtype']."'
                                 AND `value` = '".$data['value']."'";
-                $DB->queryOrDie($query, "Datainjection : error converting infos fields");
+               $DB->queryOrDie($query, "Datainjection : error converting infos fields");
             }
          }
       }
    }
 }
-
 
 function plugin_datainjection_update210_220() {
    global $DB;

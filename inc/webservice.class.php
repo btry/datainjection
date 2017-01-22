@@ -155,7 +155,7 @@ class PluginDatainjectionWebservice {
    }
 
 
-  static function methodListModels($params, $protocol) {
+   static function methodListModels($params, $protocol) {
 
       $params['itemtype'] = 'PluginDatainjectionModel';
       return PluginWebservicesMethodInventaire::methodListObjects($params, $protocol);

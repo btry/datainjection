@@ -41,8 +41,8 @@ if (!isset ($_GET["withtemplate"])) {
 $model = new PluginDatainjectionModel();
 $model->checkGlobal(READ);
 
-/* add */
 if (isset ($_POST["add"])) {
+   /* add */
    $model->check(-1, UPDATE ,$_POST);
    $newID = $model->add($_POST);
 
@@ -50,14 +50,14 @@ if (isset ($_POST["add"])) {
    Session::setActiveTab('PluginDatainjectionModel', 'PluginDatainjectionModel$3');
    Html::redirect(Toolbox::getItemTypeFormURL('PluginDatainjectionModel')."?id=$newID");
 
-/* delete */
 } else if (isset ($_POST["delete"])) {
+   /* delete */
    $model->check($_POST['id'], DELETE);
    $model->delete($_POST);
    $model->redirectToList();
 
-/* update */
 } else if (isset ($_POST["update"])) {
+   /* update */
    //Update model
    $model->check($_POST['id'], UPDATE);
    $model->update($_POST);
@@ -66,8 +66,8 @@ if (isset ($_POST["add"])) {
    $specific_model->saveFields($_POST);
    Html::back();
 
-/* update order */
 } else if (isset ($_POST["validate"])) {
+   /* update order */
    $model->check($_POST['id'], UPDATE);
    $model->switchReadyToUse();
    Html::back();
@@ -100,4 +100,3 @@ Html::header(PluginDatainjectionModel::getTypeName(), '',
 $model->display(array('id' =>$_GET["id"]));
 
 Html::footer();
-?>
