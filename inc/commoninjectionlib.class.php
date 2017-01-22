@@ -626,8 +626,8 @@ class PluginDatainjectionCommonInjectionLib {
             } else {
                $this->setValueForItemtype($itemtype, $linkfield, $value);
             }
-         }
       }
+   }
 
    /**
     * Add additional parameters needed for dropdown import
