@@ -27,7 +27,7 @@
  @link      http://www.glpi-project.org/
  @since     2009
  ---------------------------------------------------------------------- */
- class PluginDatainjectionBackendcsv extends PluginDatainjectionBackend
+class PluginDatainjectionBackendcsv extends PluginDatainjectionBackend
                                     implements PluginDatainjectionBackendInterface {
 
    private $delimiter       = '';

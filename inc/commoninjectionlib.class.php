@@ -629,7 +629,6 @@ class PluginDatainjectionCommonInjectionLib {
          }
       }
 
-
    /**
     * Add additional parameters needed for dropdown import
     *
@@ -1240,16 +1239,15 @@ class PluginDatainjectionCommonInjectionLib {
     * @return nothing
    **/
    private function addNecessaryFields() {
-     $this->setValueForItemtype($this->primary_type, 'entities_id', $this->entity);
-     if (method_exists($this->injectionClass,'addSpecificNeededFields')) {
-        $specific_fields = $this->injectionClass->addSpecificNeededFields($this->primary_type,
-                                                                          $this->values);
-        foreach ($specific_fields as $field => $value) {
-           $this->setValueForItemtype($this->primary_type, $field, $value);
-        }
+      $this->setValueForItemtype($this->primary_type, 'entities_id', $this->entity);
+      if (method_exists($this->injectionClass,'addSpecificNeededFields')) {
+         $specific_fields = $this->injectionClass->addSpecificNeededFields($this->primary_type,
+                                                                           $this->values);
+         foreach ($specific_fields as $field => $value) {
+            $this->setValueForItemtype($this->primary_type, $field, $value);
+         }
       }
    }
-
 
    /**
     * Add fields needed to inject and itemtype

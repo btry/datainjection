@@ -106,8 +106,8 @@ class PluginDatainjectionNetworkNameInjection extends NetworkName
 
       //Manage ip adresses
       if (isset($values['NetworkName']['ipaddresses_id'])) {
-          if (!countElementsInTable("glpi_ipaddresses",
-                                    "`items_id`='".$values['NetworkName']['id']."'
+         if (!countElementsInTable("glpi_ipaddresses",
+                                   "`items_id`='".$values['NetworkName']['id']."'
                                        AND `itemtype`='NetworkName'
                                        AND `name`='".$values['NetworkName']['ipaddresses_id']."'")) {
 
