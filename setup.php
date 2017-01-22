@@ -42,7 +42,8 @@ function plugin_init_datainjection() {
    if ($plugin->isActivated("datainjection")) {
 
       Plugin::registerClass('PluginDatainjectionProfile',
-                           array('addtabon' => array('Profile')));
+                            ['addtabon' => ['Profile']
+                            ]);
 
       //If directory doesn't exists, create it
       if (!plugin_datainjection_checkDirectories()) {
@@ -51,11 +52,11 @@ function plugin_init_datainjection() {
                               PLUGIN_DATAINJECTION_UPLOAD_DIR));
       }
       if (Session::haveRight('plugin_datainjection_use', READ)) {
-         $PLUGIN_HOOKS["menu_toadd"]['datainjection'] = array('tools'  => 'PluginDatainjectionMenu');
+         $PLUGIN_HOOKS["menu_toadd"]['datainjection'] = ['tools'  => 'PluginDatainjectionMenu'];
       }
 
       $PLUGIN_HOOKS['pre_item_purge']['datainjection']
-            = array('Profile' => array('PluginDatainjectionProfile', 'purgeProfiles'));
+            = ['Profile' => ['PluginDatainjectionProfile', 'purgeProfiles']];
 
       // Css file
       $PLUGIN_HOOKS['add_css']['datainjection'] = 'css/datainjection.css';
@@ -65,7 +66,7 @@ function plugin_init_datainjection() {
 
       // Inbtegration with Webservices plugin
       $PLUGIN_HOOKS['webservices']['datainjection'] = 'plugin_datainjection_registerMethods';
-      $INJECTABLE_TYPES = array();
+      $INJECTABLE_TYPES = [];
 
    }
 }
@@ -73,19 +74,20 @@ function plugin_init_datainjection() {
 
 function plugin_version_datainjection() {
 
-   return array('name'           => __('File injection', 'datainjection'),
-                'minGlpiVersion' => '0.85',
-                'author'         => 'Walid Nouh, Remi Collet, Nelly Mahu-Lasson, Xavier Caillaud',
-                'homepage'       => 'https://github.com/pluginsGLPI/datainjection',
-                'license'        => 'GPLv2+',
-                'version'        => '2.4.2'
-   );
+   return ['name'           => __('File injection', 'datainjection'),
+           'minGlpiVersion' => '0.85',
+           'author'         => 'Walid Nouh, Remi Collet, Nelly Mahu-Lasson, Xavier Caillaud',
+           'homepage'       => 'https://github.com/pluginsGLPI/datainjection',
+           'license'        => 'GPLv2+',
+           'version'        => '2.4.2'
+         ];
 }
 
 
 function plugin_datainjection_check_prerequisites() {
 
-   if (version_compare(GLPI_VERSION,'0.85','lt') || version_compare(GLPI_VERSION,'9.2','ge')) {
+   if (version_compare(GLPI_VERSION,'0.85','lt')
+      || version_compare(GLPI_VERSION,'9.2','ge')) {
       _e('This plugin requires GLPI 0.85 or higher', 'datainjection');
       return false;
    }
@@ -111,92 +113,91 @@ function getTypesToInject() {
       return;
    }
 
-   $INJECTABLE_TYPES = array('PluginDatainjectionCartridgeItemInjection'               => 'datainjection',
-                             'PluginDatainjectionBudgetInjection'                      => 'datainjection',
-                             'PluginDatainjectionComputerInjection'                    => 'datainjection',
-                             'PluginDatainjectionComputer_ItemInjection'               => 'datainjection',
-                             'PluginDatainjectionConsumableItemInjection'              => 'datainjection',
-                             'PluginDatainjectionContactInjection'                     => 'datainjection',
-                             'PluginDatainjectionContact_SupplierInjection'            => 'datainjection',
-                             'PluginDatainjectionContractInjection'                    => 'datainjection',
-                             'PluginDatainjectionContract_ItemInjection'               => 'datainjection',
-                             'PluginDatainjectionContract_SupplierInjection'           => 'datainjection',
-                                //'PluginDatainjectionDocumentInjection'               => 'datainjection',
-                             'PluginDatainjectionEntityInjection'                      => 'datainjection',
-                             'PluginDatainjectionGroupInjection'                       => 'datainjection',
-                             'PluginDatainjectionGroup_UserInjection'                  => 'datainjection',
-                             'PluginDatainjectionInfocomInjection'                     => 'datainjection',
-                             'PluginDatainjectionLocationInjection'                    => 'datainjection',
-                             'PluginDatainjectionStateInjection'                       => 'datainjection',
-                             'PluginDatainjectionManufacturerInjection'                => 'datainjection',
-                             'PluginDatainjectionMonitorInjection'                     => 'datainjection',
-                             'PluginDatainjectionNetworkequipmentInjection'            => 'datainjection',
-                             'PluginDatainjectionPeripheralInjection'                  => 'datainjection',
-                             'PluginDatainjectionPhoneInjection'                       => 'datainjection',
-                             'PluginDatainjectionPrinterInjection'                     => 'datainjection',
-                             'PluginDatainjectionProfileInjection'                     => 'datainjection',
-                             'PluginDatainjectionProfile_UserInjection'                => 'datainjection',
-                             'PluginDatainjectionSoftwareInjection'                    => 'datainjection',
-                             'PluginDatainjectionComputer_SoftwareVersionInjection'    => 'datainjection',
-                             'PluginDatainjectionComputer_SoftwareLicenseInjection'    => 'datainjection',
-                             'PluginDatainjectionSoftwareLicenseInjection'             => 'datainjection',
-                             'PluginDatainjectionSoftwareVersionInjection'             => 'datainjection',
-                             'PluginDatainjectionSupplierInjection'                    => 'datainjection',
-                             'PluginDatainjectionUserInjection'                        => 'datainjection',
-                             'PluginDatainjectionNetworkportInjection'                 => 'datainjection',
-                             'PluginDatainjectionVlanInjection'                        => 'datainjection',
-                             'PluginDatainjectionNetworkport_VlanInjection'            => 'datainjection',
-                             'PluginDatainjectionNetworkNameInjection'                 => 'datainjection',
-                             'PluginDatainjectionNetpointInjection'                    => 'datainjection',
-                             'PluginDatainjectionKnowbaseItemCategoryInjection'        => 'datainjection',
-                             'PluginDatainjectionKnowbaseItemInjection'                => 'datainjection',
-                             'PluginDatainjectionITILCategoryInjection'                => 'datainjection',
-                             'PluginDatainjectionTaskCategoryInjection'                => 'datainjection',
-                             'PluginDatainjectionSolutionTypeInjection'                => 'datainjection',
-                             'PluginDatainjectionRequestTypeInjection'                 => 'datainjection',
-                             'PluginDatainjectionSolutionTemplateInjection'            => 'datainjection',
-                             'PluginDatainjectionComputerTypeInjection'                => 'datainjection',
-                             'PluginDatainjectionMonitorTypeInjection'                 => 'datainjection',
-                             'PluginDatainjectionNetworkEquipmentTypeInjection'        => 'datainjection',
-                             'PluginDatainjectionPeripheralTypeInjection'              => 'datainjection',
-                             'PluginDatainjectionPrinterTypeInjection'                 => 'datainjection',
-                             'PluginDatainjectionPhoneTypeInjection'                   => 'datainjection',
-                             'PluginDatainjectionSoftwareLicenseTypeInjection'         => 'datainjection',
-                             'PluginDatainjectionContractTypeInjection'                => 'datainjection',
-                             'PluginDatainjectionContactTypeInjection'                 => 'datainjection',
-                             'PluginDatainjectionSupplierTypeInjection'                => 'datainjection',
-                             'PluginDatainjectionDeviceMemoryTypeInjection'            => 'datainjection',
-                             'PluginDatainjectionInterfaceTypeInjection'               => 'datainjection',
-                             'PluginDatainjectionPhonePowerSupplyTypeInjection'        => 'datainjection',
-                             'PluginDatainjectionFilesystemTypeInjection'              => 'datainjection',
-                             'PluginDatainjectionComputerModelInjection'               => 'datainjection',
-                             'PluginDatainjectionMonitorModelInjection'                => 'datainjection',
-                             'PluginDatainjectionPhoneModelInjection'                  => 'datainjection',
-                             'PluginDatainjectionPrinterModelInjection'                => 'datainjection',
-                             'PluginDatainjectionPeripheralModelInjection'             => 'datainjection',
-                             'PluginDatainjectionNetworkEquipmentModelInjection'       => 'datainjection',
-                             'PluginDatainjectionNetworkEquipmentFirmwareInjection'    => 'datainjection',
-                             'PluginDatainjectionVirtualMachineTypeInjection'          => 'datainjection',
-                             'PluginDatainjectionVirtualMachineSystemInjection'        => 'datainjection',
-                             'PluginDatainjectionVirtualMachineStateInjection'         => 'datainjection',
-                             'PluginDatainjectionDocumentTypeInjection'                => 'datainjection',
-                             'PluginDatainjectionAutoUpdateSystemInjection'            => 'datainjection',
-                             'PluginDatainjectionOperatingSystemInjection'             => 'datainjection',
-                             'PluginDatainjectionOperatingSystemVersionInjection'      => 'datainjection',
-                             'PluginDatainjectionOperatingSystemServicePackInjection'  => 'datainjection',
-                             'PluginDatainjectionNetworkInterfaceInjection'            => 'datainjection',
-                             'PluginDatainjectionDomainInjection'                      => 'datainjection',
-                             'PluginDatainjectionNetworkInjection'                     => 'datainjection',
-                             'PluginDatainjectionDeviceCaseInjection'                  => 'datainjection',
-                             'PluginDatainjectionDeviceCaseTypeInjection'              => 'datainjection',
-                             'PluginDatainjectionDeviceControlInjection'               => 'datainjection',
-                             'PluginDatainjectionDeviceProcessorInjection'             => 'datainjection',
-                             'PluginDatainjectionDeviceMemoryInjection'                => 'datainjection',
-                             'PluginDatainjectionDeviceHardDriveInjection'             => 'datainjection',
-                             'PluginDatainjectionDeviceMotherboardInjection'           => 'datainjection',
-                             'PluginDatainjectionDeviceDriveInjection'                 => 'datainjection',
-                             'PluginDatainjectionDeviceNetworkCardInjection'           => 'datainjection'
-                             );
+   $INJECTABLE_TYPES = ['PluginDatainjectionCartridgeItemInjection'               => 'datainjection',
+                        'PluginDatainjectionBudgetInjection'                      => 'datainjection',
+                        'PluginDatainjectionComputerInjection'                    => 'datainjection',
+                        'PluginDatainjectionComputer_ItemInjection'               => 'datainjection',
+                        'PluginDatainjectionConsumableItemInjection'              => 'datainjection',
+                        'PluginDatainjectionContactInjection'                     => 'datainjection',
+                        'PluginDatainjectionContact_SupplierInjection'            => 'datainjection',
+                        'PluginDatainjectionContractInjection'                    => 'datainjection',
+                        'PluginDatainjectionContract_ItemInjection'               => 'datainjection',
+                        'PluginDatainjectionContract_SupplierInjection'           => 'datainjection',
+                        'PluginDatainjectionEntityInjection'                      => 'datainjection',
+                        'PluginDatainjectionGroupInjection'                       => 'datainjection',
+                        'PluginDatainjectionGroup_UserInjection'                  => 'datainjection',
+                        'PluginDatainjectionInfocomInjection'                     => 'datainjection',
+                        'PluginDatainjectionLocationInjection'                    => 'datainjection',
+                        'PluginDatainjectionStateInjection'                       => 'datainjection',
+                        'PluginDatainjectionManufacturerInjection'                => 'datainjection',
+                        'PluginDatainjectionMonitorInjection'                     => 'datainjection',
+                        'PluginDatainjectionNetworkequipmentInjection'            => 'datainjection',
+                        'PluginDatainjectionPeripheralInjection'                  => 'datainjection',
+                        'PluginDatainjectionPhoneInjection'                       => 'datainjection',
+                        'PluginDatainjectionPrinterInjection'                     => 'datainjection',
+                        'PluginDatainjectionProfileInjection'                     => 'datainjection',
+                        'PluginDatainjectionProfile_UserInjection'                => 'datainjection',
+                        'PluginDatainjectionSoftwareInjection'                    => 'datainjection',
+                        'PluginDatainjectionComputer_SoftwareVersionInjection'    => 'datainjection',
+                        'PluginDatainjectionComputer_SoftwareLicenseInjection'    => 'datainjection',
+                        'PluginDatainjectionSoftwareLicenseInjection'             => 'datainjection',
+                        'PluginDatainjectionSoftwareVersionInjection'             => 'datainjection',
+                        'PluginDatainjectionSupplierInjection'                    => 'datainjection',
+                        'PluginDatainjectionUserInjection'                        => 'datainjection',
+                        'PluginDatainjectionNetworkportInjection'                 => 'datainjection',
+                        'PluginDatainjectionVlanInjection'                        => 'datainjection',
+                        'PluginDatainjectionNetworkport_VlanInjection'            => 'datainjection',
+                        'PluginDatainjectionNetworkNameInjection'                 => 'datainjection',
+                        'PluginDatainjectionNetpointInjection'                    => 'datainjection',
+                        'PluginDatainjectionKnowbaseItemCategoryInjection'        => 'datainjection',
+                        'PluginDatainjectionKnowbaseItemInjection'                => 'datainjection',
+                        'PluginDatainjectionITILCategoryInjection'                => 'datainjection',
+                        'PluginDatainjectionTaskCategoryInjection'                => 'datainjection',
+                        'PluginDatainjectionSolutionTypeInjection'                => 'datainjection',
+                        'PluginDatainjectionRequestTypeInjection'                 => 'datainjection',
+                        'PluginDatainjectionSolutionTemplateInjection'            => 'datainjection',
+                        'PluginDatainjectionComputerTypeInjection'                => 'datainjection',
+                        'PluginDatainjectionMonitorTypeInjection'                 => 'datainjection',
+                        'PluginDatainjectionNetworkEquipmentTypeInjection'        => 'datainjection',
+                        'PluginDatainjectionPeripheralTypeInjection'              => 'datainjection',
+                        'PluginDatainjectionPrinterTypeInjection'                 => 'datainjection',
+                        'PluginDatainjectionPhoneTypeInjection'                   => 'datainjection',
+                        'PluginDatainjectionSoftwareLicenseTypeInjection'         => 'datainjection',
+                        'PluginDatainjectionContractTypeInjection'                => 'datainjection',
+                        'PluginDatainjectionContactTypeInjection'                 => 'datainjection',
+                        'PluginDatainjectionSupplierTypeInjection'                => 'datainjection',
+                        'PluginDatainjectionDeviceMemoryTypeInjection'            => 'datainjection',
+                        'PluginDatainjectionInterfaceTypeInjection'               => 'datainjection',
+                        'PluginDatainjectionPhonePowerSupplyTypeInjection'        => 'datainjection',
+                        'PluginDatainjectionFilesystemTypeInjection'              => 'datainjection',
+                        'PluginDatainjectionComputerModelInjection'               => 'datainjection',
+                        'PluginDatainjectionMonitorModelInjection'                => 'datainjection',
+                        'PluginDatainjectionPhoneModelInjection'                  => 'datainjection',
+                        'PluginDatainjectionPrinterModelInjection'                => 'datainjection',
+                        'PluginDatainjectionPeripheralModelInjection'             => 'datainjection',
+                        'PluginDatainjectionNetworkEquipmentModelInjection'       => 'datainjection',
+                        'PluginDatainjectionNetworkEquipmentFirmwareInjection'    => 'datainjection',
+                        'PluginDatainjectionVirtualMachineTypeInjection'          => 'datainjection',
+                        'PluginDatainjectionVirtualMachineSystemInjection'        => 'datainjection',
+                        'PluginDatainjectionVirtualMachineStateInjection'         => 'datainjection',
+                        'PluginDatainjectionDocumentTypeInjection'                => 'datainjection',
+                        'PluginDatainjectionAutoUpdateSystemInjection'            => 'datainjection',
+                        'PluginDatainjectionOperatingSystemInjection'             => 'datainjection',
+                        'PluginDatainjectionOperatingSystemVersionInjection'      => 'datainjection',
+                        'PluginDatainjectionOperatingSystemServicePackInjection'  => 'datainjection',
+                        'PluginDatainjectionNetworkInterfaceInjection'            => 'datainjection',
+                        'PluginDatainjectionDomainInjection'                      => 'datainjection',
+                        'PluginDatainjectionNetworkInjection'                     => 'datainjection',
+                        'PluginDatainjectionDeviceCaseInjection'                  => 'datainjection',
+                        'PluginDatainjectionDeviceCaseTypeInjection'              => 'datainjection',
+                        'PluginDatainjectionDeviceControlInjection'               => 'datainjection',
+                        'PluginDatainjectionDeviceProcessorInjection'             => 'datainjection',
+                        'PluginDatainjectionDeviceMemoryInjection'                => 'datainjection',
+                        'PluginDatainjectionDeviceHardDriveInjection'             => 'datainjection',
+                        'PluginDatainjectionDeviceMotherboardInjection'           => 'datainjection',
+                        'PluginDatainjectionDeviceDriveInjection'                 => 'datainjection',
+                        'PluginDatainjectionDeviceNetworkCardInjection'           => 'datainjection'
+                     ];
    //Add plugins
    Plugin::doHook('plugin_datainjection_populate');
 }
@@ -220,4 +221,3 @@ function plugin_datainjection_checkDirectories() {
    }
    return true;
 }
-?>
