@@ -108,4 +108,3 @@ class PluginDatainjectionDeviceCaseInjection extends DeviceCase
    }
 
 }
-?>

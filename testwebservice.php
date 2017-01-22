@@ -117,4 +117,3 @@ function call($method,$params) {
    }
    return $response;
 }
-?>

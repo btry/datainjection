@@ -91,4 +91,3 @@ class PluginDatainjectionBudgetInjection extends Budget
    }
 
 }
-?>

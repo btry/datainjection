@@ -82,4 +82,3 @@ class PluginDatainjectionMonitorModelInjection extends MonitorModel
    }
 
 }
-?>

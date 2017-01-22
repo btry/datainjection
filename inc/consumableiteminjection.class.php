@@ -96,4 +96,3 @@ class PluginDatainjectionConsumableItemInjection extends ConsumableItem
    }
 
 }
-?>

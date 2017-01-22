@@ -82,4 +82,3 @@ class PluginDatainjectionStateInjection extends State
    }
 
 }
-?>

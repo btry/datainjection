@@ -84,4 +84,3 @@ class PluginDatainjectionComputerTypeInjection extends ComputerType
    }
 
 }
-?>

@@ -96,4 +96,3 @@ class PluginDatainjectionContract_SupplierInjection extends Contract_Supplier
                => $values[$primary_type]['id']);
    }
 }
-?>

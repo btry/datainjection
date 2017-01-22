@@ -102,4 +102,3 @@ class PluginDatainjectionProfile_UserInjection extends Profile_User
    }
 
 }
-?>

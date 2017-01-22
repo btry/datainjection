@@ -185,4 +185,3 @@ class PluginDatainjectionSoftwareVersionInjection extends SoftwareVersion
    }
 
 }
-?>

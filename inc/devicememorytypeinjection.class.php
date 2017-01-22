@@ -82,4 +82,3 @@ class PluginDatainjectionDeviceMemoryTypeInjection extends DeviceMemoryType
    }
 
 }
-?>

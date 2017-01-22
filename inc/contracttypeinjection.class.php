@@ -83,4 +83,3 @@ class PluginDatainjectionContractTypeInjection extends ContractType
    }
 
 }
-?>

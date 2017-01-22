@@ -82,4 +82,3 @@ class PluginDatainjectionVirtualMachineStateInjection extends VirtualMachineStat
    }
 
 }
-?>

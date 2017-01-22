@@ -122,4 +122,3 @@ class PluginDatainjectionNetworkNameInjection extends NetworkName
    }
 
 }
-?>

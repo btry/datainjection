@@ -93,4 +93,3 @@ class PluginDatainjectionNetworkport_VlanInjection extends NetworkPort_Vlan
    }
 
 }
-?>

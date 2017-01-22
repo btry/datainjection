@@ -51,5 +51,3 @@ if (isset ($_POST["update"])) {
 
 Session::setActiveTab('PluginDatainjectionModel', 'PluginDatainjectionModel$5');
 Html::back();
-
-?>

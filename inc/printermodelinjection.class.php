@@ -82,4 +82,3 @@ class PluginDatainjectionPrinterModelInjection extends PrinterModel
    }
 
 }
-?>

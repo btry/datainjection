@@ -106,4 +106,3 @@ class PluginDatainjectionPeripheralInjection extends Peripheral
    }
 
 }
-?>

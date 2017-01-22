@@ -443,4 +443,3 @@ class PluginDatainjectionInfo extends CommonDBTM {
    }
 
 }
-?>

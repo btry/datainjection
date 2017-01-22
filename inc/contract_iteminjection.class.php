@@ -108,4 +108,3 @@ class PluginDatainjectionContract_ItemInjection extends Contract_Item
    }
 
 }
-?>

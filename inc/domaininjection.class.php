@@ -82,4 +82,3 @@ class PluginDatainjectionDomainInjection extends Domain
    }
 
 }
-?>

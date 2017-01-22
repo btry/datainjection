@@ -141,4 +141,3 @@ interface PluginDatainjectionInjectionInterface {
    **/
    //function addSpecificNeededFields($primary_type, $fields_toinject);
 }
-?>

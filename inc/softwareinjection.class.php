@@ -134,4 +134,3 @@ class PluginDatainjectionSoftwareInjection extends Software
    }
 
 }
-?>

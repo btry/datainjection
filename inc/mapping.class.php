@@ -48,8 +48,8 @@ class PluginDatainjectionMapping extends CommonDBTM {
 
       return false;
    }
-   
-   
+
+
    function getMappingName() {
       return $this->fields["name"];
    }
@@ -78,7 +78,7 @@ class PluginDatainjectionMapping extends CommonDBTM {
    function getItemtype() {
       return $this->fields["itemtype"];
    }
-   
+
 
    /**
     * @param $model  PluginDatainjectionModel object
@@ -189,4 +189,3 @@ class PluginDatainjectionMapping extends CommonDBTM {
    }
 
 }
-?>

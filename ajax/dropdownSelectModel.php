@@ -49,5 +49,3 @@ if (($_POST['models_id'] > 0)
     && $model->can($_POST['models_id'], READ)) {
    PluginDatainjectionInfo::showAdditionalInformationsForm($model);
 }
-
-?>

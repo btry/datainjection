@@ -31,5 +31,3 @@
 include ('../../../inc/includes.php');
 
 PluginDatainjectionClientInjection::exportErrorsInCSV();
-
-?>

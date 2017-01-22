@@ -86,4 +86,3 @@ class PluginDatainjectionContactInjection extends Contact
    }
 
 }
-?>

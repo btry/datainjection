@@ -108,4 +108,3 @@ class PluginDatainjectionMonitorInjection extends Monitor
    }
 
 }
-?>

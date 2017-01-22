@@ -31,7 +31,7 @@
 class PluginDatainjectionModel extends CommonDBTM {
 
    static $rightname = "plugin_datainjection_model";
-   
+
    //Store mappings informations
    private $mappings;
 
@@ -494,7 +494,7 @@ class PluginDatainjectionModel extends CommonDBTM {
       }
 
       $this->initForm($ID, $options);
-      
+
       if ($this->isNewID($ID)) {
          $this->showAdvancedForm($ID);
       }
@@ -640,9 +640,9 @@ class PluginDatainjectionModel extends CommonDBTM {
 
    //Tabs management
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-   
+
       $canedit = Session::haveRight('plugin_datainjection_model', UPDATE);
-      
+
       if (!$withtemplate) {
          switch ($item->getType()) {
             case __CLASS__ :
@@ -1405,4 +1405,3 @@ class PluginDatainjectionModel extends CommonDBTM {
    }
 
 }
-?>

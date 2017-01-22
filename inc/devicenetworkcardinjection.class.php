@@ -108,4 +108,3 @@ class PluginDatainjectionDeviceNetworkCardInjection extends DeviceNetworkCard
    }
 
 }
-?>

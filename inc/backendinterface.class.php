@@ -66,4 +66,3 @@ interface PluginDatainjectionBackendInterface {
    function getNumberOfLines();
 
 }
-?>

@@ -96,4 +96,3 @@ class PluginDatainjectionCartridgeItemInjection extends CartridgeItem
    }
 
 }
-?>

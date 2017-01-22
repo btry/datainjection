@@ -45,4 +45,3 @@ switch ($_GET["popup"]) {
       Html::popFooter();
       break;
 }
-?>

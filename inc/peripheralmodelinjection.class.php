@@ -82,4 +82,3 @@ class PluginDatainjectionPeripheralModelInjection extends PeripheralModel
    }
 
 }
-?>

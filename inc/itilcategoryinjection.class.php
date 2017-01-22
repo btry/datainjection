@@ -86,4 +86,3 @@ class PluginDatainjectionITILCategoryInjection extends ITILCategory
    }
 
 }
-?>

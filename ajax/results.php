@@ -38,4 +38,3 @@ if (strpos($_SERVER['PHP_SELF'],"results.php")) {
 Session::checkCentralAccess();
 $model = unserialize($_SESSION['datainjection']['currentmodel']);
 PluginDatainjectionClientInjection::showResultsForm($model);
-?>

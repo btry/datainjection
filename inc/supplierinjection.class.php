@@ -85,4 +85,3 @@ class PluginDatainjectionSupplierInjection extends Supplier
    }
 
 }
-?>

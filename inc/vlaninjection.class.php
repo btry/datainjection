@@ -84,4 +84,3 @@ class PluginDatainjectionVlanInjection extends Vlan
    }
 
 }
-?>

@@ -92,4 +92,3 @@ class PluginDatainjectionComputerInjection extends Computer
    }
 
 }
-?>

@@ -82,4 +82,3 @@ class PluginDatainjectionPhoneTypeInjection extends PhoneType
    }
 
 }
-?>

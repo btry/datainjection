@@ -127,4 +127,3 @@ class PluginDatainjectionNetworkEquipmentInjection extends NetworkEquipment
    }
 
 }
-?>

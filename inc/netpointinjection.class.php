@@ -107,4 +107,3 @@ class PluginDatainjectionNetpointInjection extends Netpoint
    }
 
 }
-?>

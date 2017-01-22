@@ -190,4 +190,3 @@ class PluginDatainjectionSoftwareLicenseInjection extends SoftwareLicense
    }
 
 }
-?>

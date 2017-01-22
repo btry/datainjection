@@ -83,4 +83,3 @@ class PluginDatainjectionGroupInjection extends Group
    }
 
 }
-?>

@@ -84,4 +84,3 @@ class PluginDatainjectionSolutionTypeInjection extends SolutionType
    }
 
 }
-?>

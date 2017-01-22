@@ -82,4 +82,3 @@ class PluginDatainjectionVirtualMachineSystemInjection extends VirtualMachineSys
    }
 
 }
-?>

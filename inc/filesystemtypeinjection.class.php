@@ -82,4 +82,3 @@ class PluginDatainjectionFilesystemTypeInjection extends Filesystem
    }
 
 }
-?>

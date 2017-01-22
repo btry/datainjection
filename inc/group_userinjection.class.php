@@ -112,4 +112,3 @@ class PluginDatainjectionGroup_UserInjection extends Group_User
    }
 
 }
-?>

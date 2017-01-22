@@ -94,4 +94,3 @@ class PluginDatainjectionContact_SupplierInjection extends Contact_Supplier
    }
 
 }
-?>

@@ -90,4 +90,3 @@ class PluginDatainjectionKnowbaseItemInjection extends KnowbaseItem
    }
 
 }
-?>

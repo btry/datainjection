@@ -2005,7 +2005,4 @@ class PluginDatainjectionCommonInjectionLib {
          $injectionClass->processAfterInsertOrUpdate($this->values, $add, $this->rights);
       }
    }
-
 }
-
-?>

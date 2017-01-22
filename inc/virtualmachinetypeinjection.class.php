@@ -82,4 +82,3 @@ class PluginDatainjectionVirtualMachineTypeInjection extends VirtualMachineType
    }
 
 }
-?>

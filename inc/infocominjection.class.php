@@ -166,4 +166,3 @@ class PluginDatainjectionInfocomInjection extends Infocom
    }
 
 }
-?>

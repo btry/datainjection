@@ -67,12 +67,12 @@ if (isset ($_POST["add"])) {
    Html::back();
 
 /* update order */
-} elseif (isset ($_POST["validate"])) {
+} else if (isset ($_POST["validate"])) {
    $model->check($_POST['id'], UPDATE);
    $model->switchReadyToUse();
    Html::back();
 
-} elseif (isset($_POST['upload'])) {
+} else if (isset($_POST['upload'])) {
    if (!empty($_FILES)) {
       $model->check($_POST['id'], UPDATE);
 
@@ -86,7 +86,7 @@ if (isset ($_POST["add"])) {
    }
    Html::back();
 
-} elseif (isset($_GET['sample'])) {
+} else if (isset($_GET['sample'])) {
    $model->check($_GET['sample'], READ);
    $modeltype = PluginDatainjectionModel::getInstance($model->getField('filetype'));
    $modeltype->getFromDBByModelID($model->getField('id'));
@@ -94,7 +94,7 @@ if (isset ($_POST["add"])) {
    exit (0);
 }
 
-Html::header(PluginDatainjectionModel::getTypeName(), '', 
+Html::header(PluginDatainjectionModel::getTypeName(), '',
              "tools", "plugindatainjectionmenu", "model");
 
 $model->display(array('id' =>$_GET["id"]));

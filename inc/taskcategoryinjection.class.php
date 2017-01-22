@@ -84,4 +84,3 @@ class PluginDatainjectionTaskCategoryInjection extends TaskCategory
    }
 
 }
-?>

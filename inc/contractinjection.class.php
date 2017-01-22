@@ -155,4 +155,3 @@ class PluginDatainjectionContractInjection extends Contract
    }
 
 }
-?>

@@ -73,4 +73,3 @@ class PluginDatainjectionDocumentInjection extends Document
    }
 
 }
-?>

@@ -81,4 +81,3 @@ class PluginDatainjectionKnowbaseItemCategoryInjection extends KnowbaseItemCateg
    }
 
 }
-?>

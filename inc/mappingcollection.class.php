@@ -27,7 +27,7 @@
  @link      http://www.glpi-project.org/
  @since     2009
  ---------------------------------------------------------------------- */
- 
+
 class PluginDatainjectionMappingCollection {
 
    private $mappingCollection;
@@ -187,4 +187,3 @@ class PluginDatainjectionMappingCollection {
    }
 
 }
-?>

@@ -30,7 +30,7 @@
 
 include ('../../../inc/includes.php');
 
-Html::header(__('File injection', 'datainjection'), $_SERVER["PHP_SELF"], 
+Html::header(__('File injection', 'datainjection'), $_SERVER["PHP_SELF"],
              "tools", "plugindatainjectionmenu", "client");
 
 if (isset($_SESSION['datainjection']['go'])) {
@@ -95,5 +95,3 @@ if (isset($_SESSION['datainjection']['go'])) {
 }
 
 Html::footer();
-
-?>

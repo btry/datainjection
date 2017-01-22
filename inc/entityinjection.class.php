@@ -162,4 +162,3 @@ class PluginDatainjectionEntityInjection extends Entity
    }
 
 }
-?>

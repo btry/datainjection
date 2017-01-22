@@ -184,4 +184,3 @@ class PluginDatainjectionUserInjection extends User
    }
 
 }
-?>

@@ -127,4 +127,3 @@ class PluginDatainjectionComputer_SoftwareVersionInjection extends Computer_Soft
    }
 
 }
-?>
